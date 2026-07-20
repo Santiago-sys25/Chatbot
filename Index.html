@@ -1,34 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chatbot Local Gratis</title>
-  <link rel="stylesheet" href="Sytle.css">
+  <link rel="stylesheet" href="Sytle.css" />
 </head>
 <body>
-<div class="chat-container">
-    <div class="header">
-        🍔 RapiBot 
-    </div>
-
-    <div class="chat-box" id="chatBox">
-        <div class="message bot">
-            Hola bienvenido
-             Soy Rapibot tu asistente virtual de menu ¿en que puedo ayudarte el dia de hoy?
+  <main class="page-layout">
+    <section class="panel">
+      <div class="chat-container">
+        <div class="header">
+          <span>🍔 RapiBot</span>
+          <div class="status-pill" id="statusPill">Listo para demo</div>
         </div>
-    </div>
 
-    <div class="quick-actions">
-      <button class="chip" type="button" data-text="menu">Menú</button>
-      <button class="chip" type="button" data-text="recibo">Recibo</button>
-      <button class="chip" type="button" data-text="ayuda">Ayuda</button>
-    </div>
+        <div class="chat-box" id="chatBox" aria-live="polite">
+          <div class="message bot">
+            Hola, bienvenido. Soy RapiBot. ¿En qué te ayudo hoy?
+          </div>
+        </div>
 
-    <div class="input-area">
-        <input type="text" id="userInput" placeholder="Escribe 'menu', 'hamburguesa' o 'ayuda'...">
-        <button id="sendButton" type="button">Enviar</button>
-    </div>
-</div>
-<script src="Script.js"></script>
+        <div class="demo-hint">
+          Prueba: "combo clásico", "promo", "2 papas", "pago con nequi", "delivery"
+        </div>
+
+        <div class="quick-actions">
+          <button class="chip" type="button" data-text="menu">Menú</button>
+          <button class="chip" type="button" data-text="combo clásico">Combo</button>
+          <button class="chip" type="button" data-text="promo">Promoción</button>
+          <button class="chip" type="button" data-text="ayuda">Ayuda</button>
+        </div>
+
+        <div class="input-area">
+          <input type="text" id="userInput" placeholder="Escribe aquí..." autocomplete="off" />
+          <button id="sendButton" type="button">Enviar</button>
+        </div>
+      </div>
+
+      <aside class="order-summary">
+        <section class="summary-card">
+          <h3>🛒 Mi pedido</h3>
+          <div id="summaryList">
+            <div class="summary-empty">Aún no has agregado nada al carrito</div>
+          </div>
+
+          <div class="delivery-area">
+            <label class="delivery-label" for="addressInput">Dirección para delivery</label>
+            <input type="text" id="addressInput" placeholder="Ej: Calle 123 #45-67..." autocomplete="off" />
+          </div>
+
+          <div class="summary-actions">
+            <button id="editOrderBtn" type="button">Editar</button>
+            <button id="clearOrderBtn" type="button">Limpiar</button>
+            <button id="confirmOrderBtn" type="button">Confirmar</button>
+          </div>
+        </section>
+
+        <section class="receipt-card" id="receiptCard" hidden>
+          <h3>🧾 Recibo</h3>
+          <div id="receiptContent" class="receipt-body">
+            Aquí se mostrará el recibo cuando confirmes el pedido.
+          </div>
+        </section>
+
+        <section class="faq-panel" aria-label="Preguntas frecuentes">
+          <h4>❓ Preguntas frecuentes</h4>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-delivery">
+                <span>¿Tienen delivery?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer" id="faq-delivery" hidden>
+                Sí, entregamos en un radio de 5 km.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-horario">
+                <span>¿Cuál es el horario?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer" id="faq-horario" hidden>
+                Atendemos de lunes a domingo de 11:00 a 22:00.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-pago">
+                <span>¿Qué métodos de pago aceptan?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer" id="faq-pago" hidden>
+                Aceptamos efectivo, Nequi y tarjeta.
+              </div>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script src="Script.js"></script>
 </body>
+</html>
